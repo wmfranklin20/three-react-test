@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'https://unpkg.com/three@0.164.1/build/three.module.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.164.1/examples/jsm/controls/OrbitControls.js';
+import { addLights } from './Lighting';
+import { LoadModel } from './AltLoadModel';
 
 function SceneInit({ onSceneInit }) {
     const mountRef = useRef(null)
@@ -40,12 +42,7 @@ function SceneInit({ onSceneInit }) {
         controls.dampingFactor = 0.05  
 
         // Lights
-        const ambientLight = new THREE.AmbientLight(new THREE.Color('rgb(255,255,255)'), 5); // Soft white light
-        scene.add(ambientLight);
-
-        const pointLight = new THREE.PointLight(new THREE.Color('rgb(255,255,255)'), 100_000);
-        pointLight.position.set(50, 50, 500);
-        scene.add(pointLight);
+        addLights(scene)
 
         const animate = () => {
             requestAnimationFrame(animate);
@@ -63,7 +60,11 @@ function SceneInit({ onSceneInit }) {
         }
     }, [onSceneInit])
     
-    return <div className='canvas' ref={mountRef}></div>
+    return (
+        <div id='canvas-container' style={{height:"100%", width:"100%"}}>
+            <div id='canvas' ref={mountRef}></div>
+        </div>
+    )
 }
 
 export default SceneInit

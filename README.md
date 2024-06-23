@@ -8,3 +8,11 @@ Testing for utilziing native Three.js in a React/Vite framework.
     2. Call LoadModel using useState in App to reference the scene objects and append model to scene
 
 It seems like best practice might be to load in App, similar to Vanilla structuring of loading Scene, then calling lights and models in main Model file.
+
+
+### App Structure
+
+main.jsx                - Calls App only
+    App.jsx             - Calls all functions related to model and UI, location for interaction
+        model.jsx       - Calls model functions
+        ui.jsx          - Calls ui functions

@@ -8,7 +8,11 @@ function Model() {
   const [sceneParams, setSceneParams] = useState(null)
   const [loadedObject, setLoadedObject] = useState(null)
  
-  useEffect(() => {                           //Declares variable called in return function
+  useEffect(() => {                 
+    console.log(sceneParams)          //Declares variable called in return function
+    //let testMount = sceneParams.sceneContainer
+    //console.log(testMount)
+
     console.log(loadedObject)
     if (loadedObject) {                       //Checks if loadedObject is not Null
       loadedObject.children.forEach((child, j) => {
@@ -21,9 +25,9 @@ function Model() {
         newMat.color.r = 1
         newMat.color.g = 1
         newMat.color.b = 1
-        console.log(child.material)
+        //console.log(child.material)
         child.material = newMat
-        console.log(child.material)
+        //console.log(child.material)
         /*
         child.material.color.r = (j / loadedObject.children.length)
         child.material.color.g = (j / loadedObject.children.length)

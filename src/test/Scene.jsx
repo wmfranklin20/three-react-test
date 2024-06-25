@@ -6,9 +6,10 @@ import { LoadModel } from './AltLoadModel';
 
 function SceneInit({ onSceneInit }) {
     const mountRef = useRef(null)
+    
 
     useEffect(() => {
-        const mount = mountRef.current
+        const sceneContainer = mountRef.current
 
         const scene = new THREE.Scene()
         scene.up = new THREE.Vector3(0,0,1)
@@ -18,15 +19,15 @@ function SceneInit({ onSceneInit }) {
             antialias: true,
             alpha: true
         })
-        renderer.setSize(mount.clientWidth, mount.clientHeight)
+        renderer.setSize(sceneContainer.clientWidth, sceneContainer.clientHeight)
         renderer.setPixelRatio(window.devicePixelRatio)
         renderer.shadowMap.enabled = true
         renderer.shadowMap.type = THREE.PCFSoftShadowMap
-        mount.appendChild(renderer.domElement)
+        sceneContainer.appendChild(renderer.domElement)
 
         const camera = new THREE.PerspectiveCamera(
             60,
-            (mount.clientWidth / mount.clientHeight),
+            (sceneContainer.clientWidth / sceneContainer.clientHeight),
             0.1,
             10_000
         )
@@ -41,6 +42,7 @@ function SceneInit({ onSceneInit }) {
         controls.enableDamping = true                           // Damping for smooth camera movement
         controls.dampingFactor = 0.05  
 
+
         // Lights
         addLights(scene)
 
@@ -52,11 +54,11 @@ function SceneInit({ onSceneInit }) {
         animate();
 
         if (onSceneInit) {
-            onSceneInit({ scene, camera, renderer, controls });
+            onSceneInit({ scene, camera, renderer, controls, sceneContainer });
         }
 
         return () => {
-            mount.removeChild(renderer.domElement)
+            sceneContainer.removeChild(renderer.domElement)
         }
     }, [onSceneInit])
     

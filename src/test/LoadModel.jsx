@@ -1,5 +1,3 @@
-
-
 import { useEffect } from 'react'
 import { Rhino3dmLoader } from 'https://unpkg.com/three@0.164.1/examples/jsm/loaders/3DMLoader.js';
 

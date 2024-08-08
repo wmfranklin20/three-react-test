@@ -8,7 +8,7 @@ function Model() {
   const [sceneParams, setSceneParams] = useState(null)
   const [loadedObject, setLoadedObject] = useState(null)
  
-  useEffect(() => {                 
+  useEffect((sceneParams) => {                 
     console.log(sceneParams)          //Declares variable called in return function
     //let testMount = sceneParams.sceneContainer
     //console.log(testMount)

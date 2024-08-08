@@ -11,7 +11,7 @@ function Model() {
   useEffect(() => {                           //Declares variable called in return function
     console.log(loadedObject)
     if (loadedObject) {                       //Checks if loadedObject is not Null
-      loadedObject.children.forEach((child, j) => {
+      loadedObject.children.forEach((child) => {
         const origMat = child.material.clone()
         const newMat = new THREE.MeshStandardMaterial({
           color: origMat.color,
@@ -33,10 +33,6 @@ function Model() {
       })
     }
   }, [loadedObject])
-
-  function onMouseEnter() {
-    console.log()
-  }
 
   return (
     <>

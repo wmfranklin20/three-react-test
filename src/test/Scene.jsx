@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import * as THREE from 'https://unpkg.com/three@0.164.1/build/three.module.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.164.1/examples/jsm/controls/OrbitControls.js';
 import { addLights } from './Lighting';
-import { LoadModel } from './AltLoadModel';
 
 function SceneInit({ onSceneInit }) {
     const mountRef = useRef(null)
